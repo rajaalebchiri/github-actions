@@ -1,2 +1,2 @@
 # github-actions
-Lwaening GitHub actions
+Learning and Practicing GitHub Actions
