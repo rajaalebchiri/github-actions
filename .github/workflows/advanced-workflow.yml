@@ -40,8 +40,17 @@ jobs:
      JOB_VAR: "second job variable"
    steps:
      - name: step1
-     env:
-       STEP_VAR: "This variable is declared at the step level"
+       env:
+         STEP_VAR: "This variable is declared at the step level"
        shell: bash
-       run: echo "hello from step 2 after step 1"
-       
+       run: |
+         echo "hello from step 2 after step 1"
+         echo $WORKFLOW_VAR
+         echo $JOB_VAR
+         echo $STEP_VAR
+         echo "The following is a secret: ${{ secrets.SOME_SECRET }}, of course, I cant tell you because then it wouldnt be a secret..."
+         echo "The following are default environment variables:"
+         echo $GITHUB_ACTOR
+         echo $GITHUB_JOB
+         echo $GITHUB_REF
+               
