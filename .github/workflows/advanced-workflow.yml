@@ -5,7 +5,8 @@ name: learn-github-actions
 run-name: $${{ github.actor }} is learning GitHub Actions
 
 # Controls when the workflow will run
-on: [push]
+on: ["push"]
+
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
@@ -13,5 +14,7 @@ jobs:
    runs-on: ubuntu-latest
    steps:
      - name: first-step
-     - shell: bash
-     - run: echo "hello world from github"
+       shell: bash
+       run: echo "hello world from github"
+     - name: checkout
+       uses: actions/checkout@v4
