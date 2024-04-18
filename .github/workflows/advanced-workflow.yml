@@ -5,7 +5,14 @@ name: learn-github-actions
 run-name: $${{ github.actor }} is learning GitHub Actions
 
 # Controls when the workflow will run
-on: ["push"]
+on:
+  workflow_dispatch:
+    inputs:
+      who-to-greet:
+        description: Who to greet in the log
+        required: true
+        default: 'World'
+        type: string
 
   
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
@@ -16,5 +23,9 @@ jobs:
      - name: first-step
        shell: bash
        run: echo "hello world from github"
-     - name: checkout
-       uses: actions/checkout@v4
+     - name: Print to Log
+       id: print-to-log
+       uses: actions/hello-world-javascript-action@main
+       with:
+         who-to-greet: ${{ inputs.who-to-greet }}
+
