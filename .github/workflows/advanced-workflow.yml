@@ -28,4 +28,5 @@ jobs:
        uses: actions/hello-world-javascript-action@main
        with:
          who-to-greet: ${{ inputs.who-to-greet }}
-
+     - name: print-time
+       run: echo "the time of the greeting was ${{ steps.print-to-log.outputs.time }}"
